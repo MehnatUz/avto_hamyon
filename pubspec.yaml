@@ -1,0 +1,41 @@
+name: avto_hamyon
+description: A new Flutter application.
+publish_to: 'none' # Remove this line if you wish to publish to pub.dev
+version: 1.0.0+1
+
+environment:
+  sdk: ">=2.12.0 <3.0.0"
+
+dependencies:
+  flutter:
+    sdk: flutter
+  dots_indicator: ^2.1.0
+  flutter_svg: ^1.0.3
+  google_fonts: ^2.3.2
+  cupertino_icons: ^1.0.2
+  cached_network_image: ^3.2.0
+  yandex_mapkit: ^2.0.3
+  geolocator: ^8.2.0
+  flutter_rating_bar: ^4.0.0
+  mask_text_input_formatter: ^2.0.0
+  dio: ^4.0.4
+  platform_device_id: ^1.0.1
+  flutter_bloc: ^8.0.1
+  equatable: ^2.0.3
+  bloc_concurrency: ^0.2.0
+  url_launcher: ^6.1.2
+
+dev_dependencies:
+  flutter_test:
+    sdk: flutter
+  flutter_lints: ^1.0.0
+  flutter_native_splash: ^2.0.4
+
+
+flutter_native_splash:
+  background_image: "assets/img/splashimage.png"
+flutter:
+  uses-material-design: true
+
+  assets:
+    - assets/img/
