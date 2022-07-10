@@ -1,7 +1,5 @@
 import 'package:avto_hamyon/asset.dart';
 import 'package:avto_hamyon/pages/car_register_page.dart';
-import 'package:avto_hamyon/pages/category_detail_page.dart';
-import 'package:avto_hamyon/pages/create_page.dart';
 import 'package:avto_hamyon/pages/create_place.dart';
 import 'package:avto_hamyon/widgets/add_car_item.dart';
 import 'package:avto_hamyon/widgets/car_item.dart';
@@ -10,7 +8,6 @@ import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 
 import '../widgets/add_card_item.dart';
-import '../widgets/place_item.dart';
 
 class MyCarsPage extends StatefulWidget {
   const MyCarsPage({Key? key}) : super(key: key);

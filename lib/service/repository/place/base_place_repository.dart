@@ -6,5 +6,5 @@ abstract class BasePlaceRepository {
 
   Future<PlaceModel> getPlaces();
 
-
+  Future<PlaceModel> getPlacesById(int id);
 }

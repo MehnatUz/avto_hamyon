@@ -10,12 +10,24 @@ class PlaceItem extends StatefulWidget {
       required this.description,
       required this.time,
       required this.distance,
+      required this.phone,
+      required this.image1,
+      required this.image2,
+      required this.image3,
+      required this.image4,
+      required this.image5,
       required this.rating})
       : super(key: key);
   final String title;
   final String description;
   final String time;
   final String distance;
+  final String phone;
+  final String image1;
+  final String image2;
+  final String image3;
+  final String image4;
+  final String image5;
   final String rating;
 
   @override
@@ -101,30 +113,41 @@ class _PlaceItemState extends State<PlaceItem>
           const SizedBox(height: 20),
           const Divider(),
           const SizedBox(height: 10),
-          Visibility(visible: _expanded, child: const PlaceBody()),
+          Visibility(
+              visible: _expanded,
+              child: PlaceBody(
+                time: widget.time,
+                address: widget.distance,
+                image1: widget.image1,
+                image2: widget.image2,
+                image3: widget.image3,
+                image4: widget.image4,
+                image5: widget.image5,
+                phone: widget.phone,
+              )),
           const SizedBox(height: 20),
           Row(
             crossAxisAlignment: CrossAxisAlignment.end,
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: [
-              GestureDetector(
-                behavior: HitTestBehavior.opaque,
-                child: Row(
-                  crossAxisAlignment: CrossAxisAlignment.center,
-                  children: [
-                    const Icon(
-                      Icons.star_border,
-                      size: 22,
-                      color: Color(0xffffc107),
-                    ),
-                    const SizedBox(width: 4),
-                    Text(
-                      widget.rating,
-                      style: GoogleFonts.roboto(fontSize: 14),
-                    )
-                  ],
-                ),
-              ),
+              // GestureDetector(
+              //   behavior: HitTestBehavior.opaque,
+              //   child: Row(
+              //     crossAxisAlignment: CrossAxisAlignment.center,
+              //     children: [
+              //       const Icon(
+              //         Icons.star_border,
+              //         size: 22,
+              //         color: Color(0xffffc107),
+              //       ),
+              //       const SizedBox(width: 4),
+              //       Text(
+              //         widget.rating,
+              //         style: GoogleFonts.roboto(fontSize: 14),
+              //       )
+              //     ],
+              //   ),
+              // ),
               GestureDetector(
                 behavior: HitTestBehavior.opaque,
                 child: Row(
@@ -135,9 +158,13 @@ class _PlaceItemState extends State<PlaceItem>
                       color: Color(0xff166799),
                     ),
                     const SizedBox(width: 4),
-                    Text(
-                      widget.distance,
-                      style: GoogleFonts.roboto(fontSize: 14),
+                    Container(
+                      constraints: const BoxConstraints(maxWidth: 90),
+                      child: Text(
+                        widget.distance,
+                        maxLines: 1,
+                        style: GoogleFonts.roboto(fontSize: 14),
+                      ),
                     )
                   ],
                 ),

@@ -135,7 +135,6 @@ class _IntroSkipState extends State<IntroSkip> {
     print('worked here');
     brands = await repository.getCarBrands();
     models = await repository.getCarModels(1);
-    places = await repositoryPlace.getPlaces();
     placesCategories = await repositoryPlace.getPlaceCategories();
     print('CATEGORIES IS ${placesCategories.count}');
   }

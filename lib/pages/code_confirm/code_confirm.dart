@@ -107,13 +107,13 @@ class _CodeConfirmPageState extends State<CodeConfirmPage> {
                             child: GestureDetector(
                               onTap: () {
                                 if (codeController.text.length == 4) {
-                                  // bloc.add(ConfirmPressed(
-                                  //     codeController.text, widget.token));
-                                  Navigator.pushReplacement(
-                                    context,
-                                    CupertinoPageRoute(
-                                        builder: (_) => const HomePage()),
-                                  );
+                                  bloc.add(ConfirmPressed(
+                                      codeController.text, widget.token));
+                                  // Navigator.pushReplacement(
+                                  //   context,
+                                  //   CupertinoPageRoute(
+                                  //       builder: (_) => const HomePage()),
+                                  // );
                                 }
                               },
                               behavior: HitTestBehavior.opaque,

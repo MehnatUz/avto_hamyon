@@ -33,4 +33,17 @@ class PlaceRepository extends BasePlaceRepository {
       throw Exception('ERROR IS' + response.data.toString());
     }
   }
+
+  @override
+  Future<PlaceModel> getPlacesById(int id) async {
+    final response = await _httpClient
+        .get(base_url + url_places, queryParameters: {"category": "$id"});
+    if (response.statusCode == 200) {
+      var responsePlace = placeModelFromJson(response.toString());
+      print('PLACES IS => ${responsePlace.count}\n');
+      return responsePlace;
+    } else {
+      throw Exception('ERROR IS' + response.data.toString());
+    }
+  }
 }

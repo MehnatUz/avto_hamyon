@@ -1,6 +1,6 @@
 import 'package:avto_hamyon/dialogs/car_select_dialog.dart';
 import 'package:avto_hamyon/dialogs/name_select_brand.dart';
-import 'package:avto_hamyon/pages/category_detail_page.dart';
+import 'package:avto_hamyon/pages/category_detail/category_detail_page.dart';
 import 'package:avto_hamyon/pages/my_cars_page.dart';
 import 'package:avto_hamyon/widgets/simple_button.dart';
 import 'package:flutter/cupertino.dart';

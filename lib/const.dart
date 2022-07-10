@@ -14,7 +14,7 @@ String url_places = 'api/$version/main/places';
 String url_register = 'api/$version/auth/register/';
 String url_confirm = 'api/$version/auth/confirmation/';
 
-PlaceModel places = PlaceModel();
+PlaceModel recentPlaces = PlaceModel();
 PlaceCategory placesCategories = PlaceCategory();
 CarBrandModel brands = CarBrandModel();
 CarModelModel models = CarModelModel();

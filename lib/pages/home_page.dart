@@ -1,6 +1,6 @@
 import 'package:avto_hamyon/asset.dart';
 import 'package:avto_hamyon/const.dart';
-import 'package:avto_hamyon/pages/category_detail_page.dart';
+import 'package:avto_hamyon/pages/category_detail/category_detail_page.dart';
 import 'package:avto_hamyon/pages/my_cars_page.dart';
 import 'package:avto_hamyon/pages/place_detail_page.dart';
 import 'package:avto_hamyon/pages/search_page.dart';
@@ -94,7 +94,10 @@ class _HomePageState extends State<HomePage> {
                       Navigator.push(
                         context,
                         CupertinoPageRoute(
-                            builder: (_) => const CategoryDetailPage()),
+                            builder: (_) => CategoryDetailPage(
+                                  id: placesCategories.results[index].id!,
+                                  title: placesCategories.results[index].title!,
+                                )),
                       );
                     },
                   );
@@ -130,11 +133,11 @@ class _HomePageState extends State<HomePage> {
                             context,
                             CupertinoPageRoute(
                                 builder: (_) =>
-                                    PlacePage(place: places.results[i])),
+                                    PlacePage(place: recentPlaces.results[i])),
                           );
                         },
                         child: SubCategoryItem(
-                          title: places.results[i].title,
+                          title: recentPlaces.results[i].title,
                           icon: const Icon(
                             CupertinoIcons.car_detailed,
                             size: 36,
