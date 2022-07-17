@@ -2,11 +2,8 @@ import 'dart:convert';
 import 'dart:io';
 
 import 'package:avto_hamyon/pages/auth/bloc/register_bloc.dart';
-import 'package:avto_hamyon/pages/code_confirm/code_confirm.dart';
 import 'package:avto_hamyon/pages/home_page.dart';
-import 'package:avto_hamyon/widgets/custom_button.dart';
 import 'package:avto_hamyon/widgets/custom_password_field.dart';
-import 'package:avto_hamyon/widgets/custom_phone_field.dart';
 import 'package:avto_hamyon/widgets/custom_textfield.dart';
 import 'package:avto_hamyon/widgets/simple_button.dart';
 import 'package:flutter/cupertino.dart';
@@ -32,16 +29,11 @@ class _LoginPageState extends State<LoginPage> {
 
   final controllerEmail = TextEditingController();
   final controllerPassword = TextEditingController();
-  final controllerReinputPassword = TextEditingController();
-  final controllerName = TextEditingController();
-  final controllerPhone = TextEditingController();
-  final controllerAdress = TextEditingController();
 
   @override
   void dispose() {
-    controllerName.dispose();
-    controllerPhone.dispose();
-    controllerAdress.dispose();
+    controllerEmail.dispose();
+    controllerPassword.dispose();
     super.dispose();
   }
 
@@ -71,7 +63,7 @@ class _LoginPageState extends State<LoginPage> {
         child: Scaffold(
           body: BlocConsumer<RegisterBloc, RegisterState>(
             listener: (context, state) {
-              if (state is RegisterFailed) {
+              if (state is LoginFailed) {
                 scaffold.showSnackBar(
                   SnackBar(
                     backgroundColor: Colors.redAccent,
@@ -79,23 +71,20 @@ class _LoginPageState extends State<LoginPage> {
                   ),
                 );
               }
-              if (state is RegisterLoaded) {
-                // Navigator.pushReplacement(
-                //   context,
-                //   CupertinoPageRoute(
-                //     builder: (_) => CodeConfirmPage(
-                //         phone: controllerPhone.text,
-                //         password: controllerPassword.text,
-                //         register: true),
-                //   ),
-                // );
+              if (state is LoginLoaded) {
+                Navigator.pushReplacement(
+                  context,
+                  CupertinoPageRoute(
+                    builder: (_) => const HomePage(),
+                  ),
+                );
               }
             },
             builder: (context, state) {
               if (kDebugMode) {
                 print('STATE IS $state');
               }
-              if (state is RegisterLoading) {
+              if (state is LoginLoading) {
                 return const Center(child: CircularProgressIndicator());
               }
               return SizedBox(
@@ -153,29 +142,19 @@ class _LoginPageState extends State<LoginPage> {
                           style: GoogleFonts.openSans(color: Colors.white),
                           text: 'Kirish',
                           onTap: () {
-                            Navigator.push(
-                              context,
-                              CupertinoPageRoute(builder: (_) => HomePage()),
-                            );
-                            // if (controllerName.text.isNotEmpty &&
-                            //     controllerEmail.text.isNotEmpty &&
-                            //     controllerPassword.text.isNotEmpty &&
-                            //     controllerReinputPassword.text.isNotEmpty &&
-                            //     controllerPhone.text.isNotEmpty) {
-                            //   bloc.add(RegisterPressed(
-                            //       controllerEmail.text,
-                            //       controllerPhone.text,
-                            //       controllerPassword.text,
-                            //       controllerName.text));
-                            // } else {
-                            //   scaffold.showSnackBar(
-                            //     const SnackBar(
-                            //       backgroundColor: Colors.redAccent,
-                            //       content:
-                            //           Text('Iltimos maydonlarni toldiring'),
-                            //     ),
-                            //   );
-                            // }
+                            if (controllerEmail.text.isNotEmpty &&
+                                controllerPassword.text.isNotEmpty) {
+                              bloc.add(LoginPressed(controllerEmail.text,
+                                  controllerPassword.text));
+                            } else {
+                              scaffold.showSnackBar(
+                                const SnackBar(
+                                  backgroundColor: Colors.redAccent,
+                                  content:
+                                      Text('Iltimos maydonlarni toldiring'),
+                                ),
+                              );
+                            }
                           },
                         ),
                       ),

@@ -18,3 +18,19 @@ class RegisterLoaded extends RegisterState {
 
   RegisterLoaded(this.response);
 }
+
+class LoginLoading extends RegisterState {}
+
+class LlginInitial extends RegisterState {}
+
+class LoginFailed extends RegisterState {
+  final String error;
+
+  LoginFailed(this.error);
+}
+
+class LoginLoaded extends RegisterState {
+  final LoginResponse response;
+
+  LoginLoaded(this.response);
+}

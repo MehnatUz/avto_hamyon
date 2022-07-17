@@ -42,6 +42,7 @@ class _RegisterPageState extends State<RegisterPage> {
     controllerName.dispose();
     controllerPhone.dispose();
     controllerAdress.dispose();
+    bloc.close();
     super.dispose();
   }
 

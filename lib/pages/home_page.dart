@@ -116,7 +116,7 @@ class _HomePageState extends State<HomePage> {
               SizedBox(
                 height: MediaQuery.of(context).size.width * 0.3,
                 child: ListView.builder(
-                  itemCount: 10,
+                  itemCount: recentPlaces.results.length,
                   scrollDirection: Axis.horizontal,
                   physics: const BouncingScrollPhysics(),
                   padding: const EdgeInsets.symmetric(horizontal: 16),
@@ -129,12 +129,14 @@ class _HomePageState extends State<HomePage> {
                           right: i == 6 ? 0 : 8),
                       child: GestureDetector(
                         onTap: () {
-                          Navigator.push(
-                            context,
-                            CupertinoPageRoute(
-                                builder: (_) =>
-                                    PlacePage(place: recentPlaces.results[i])),
-                          );
+                          if (recentPlaces.results.isNotEmpty) {
+                            Navigator.push(
+                              context,
+                              CupertinoPageRoute(
+                                  builder: (_) => PlacePage(
+                                      place: recentPlaces.results[i])),
+                            );
+                          }
                         },
                         child: SubCategoryItem(
                           title: recentPlaces.results[i].title,

@@ -2,6 +2,7 @@ import 'dart:convert';
 
 import 'package:avto_hamyon/const.dart';
 import 'package:avto_hamyon/service/models/auth_response.dart';
+import 'package:avto_hamyon/service/models/login_response.dart';
 import 'package:avto_hamyon/service/models/register_error_response.dart';
 import 'package:avto_hamyon/service/models/register_request_model.dart';
 import 'package:avto_hamyon/service/repository/auth/base_auth_reposiory.dart';
@@ -38,18 +39,18 @@ class AuthRepository extends BaseAuthRepository {
   }
 
   @override
-  Future<AuthResponse> login(String email, String password) async {
+  Future<LoginResponse> login(String email, String password) async {
     AuthRequest request = AuthRequest(
         password: password, phone: 'phone', email: email, username: 'username');
     final response =
-        await _httpClient.post(base_url + url_register, data: request.toJson());
+        await _httpClient.post(base_url + url_login, data: request.toJson());
     print('RESPONSE IS => ${response.data}\n');
 
-    if (response.statusCode == 201) {
+    if (response.statusCode == 200) {
       var responseModels =
-          AuthResponse.fromJson(json.decode(response.toString()));
+          LoginResponse.fromJson(json.decode(response.toString()));
       if (kDebugMode) {
-        print('TOKEN IS => ${responseModels.token}\n');
+        print('TOKEN IS => ${responseModels.data.token}\n');
       }
       return responseModels;
     } else if (response.statusCode == 400) {

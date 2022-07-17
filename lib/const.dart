@@ -12,6 +12,7 @@ String url_oil = 'api/$version/car/oils/';
 String url_categories = 'api/$version/main/categories';
 String url_places = 'api/$version/main/places';
 String url_register = 'api/$version/auth/register/';
+String url_login = 'api/$version/auth/login/';
 String url_confirm = 'api/$version/auth/confirmation/';
 
 PlaceModel recentPlaces = PlaceModel();
